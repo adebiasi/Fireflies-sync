@@ -7,6 +7,7 @@ class Firefly {
         this.omega = 0.05 + random(-0.01, 0.01);
         this.vx = random(-1.5, 1.5);
         this.vy = random(-1.5, 1.5);
+        this.radius = random(1, 6); // raggio casuale tra 1 e 4
     }
 
     updatePhase(K, fireflies, radius = 100) {
@@ -53,12 +54,12 @@ class Firefly {
         noStroke();
         if (redGlow) {
             // glow rosso
-            fill(0, 30, brightness, 255);
-            ellipse(this.x, this.y, 4, 4);
+            fill(0, 60, brightness, 255);
+            ellipse(this.x, this.y, this.radius, this.radius); // usa il raggio specifico
         } else {
             // glow normale
-            fill(60, 30, brightness, 255);
-            ellipse(this.x, this.y, 4, 4);
+            fill(60, 60, brightness, 255);
+            ellipse(this.x, this.y, this.radius, this.radius); // usa il raggio specifico
         }
     }
 }
@@ -71,7 +72,8 @@ let syncEnabled = true; // stato della sincronizzazione
 let syncButton;
 let radiusSlider; // slider per il raggio di sincronizzazione
 let radius = 100; // valore iniziale del raggio
-let selectedIndex = 0; // indice della lucciola selezionata
+let selectedIndex = -1; // indice della lucciola selezionata
+let deleteAllButton; // bottone per eliminare tutte le lucciole
 
 // GIF recording variables
 let gifRecorder;
@@ -127,6 +129,16 @@ function setup() {
     controlsDiv.style('padding', '10px 20px');
     controlsDiv.style('border-radius', '10px');
     controlsDiv.style('width', 'max-content');
+
+    // Bottone per eliminare tutte le lucciole
+    deleteAllButton = createButton('Clear All');
+    deleteAllButton.parent(controlsDiv);
+    deleteAllButton.style('font-size', '16px');
+    deleteAllButton.style('margin-left', '20px');
+    deleteAllButton.mousePressed(() => {
+        fireflies = [];
+        selectedIndex = -1;
+    });
 
     // crea il canvas e lo mette come figlio del contenitore principale
     let cnv = createCanvas(1200, 800);
@@ -261,7 +273,7 @@ console.log("mousePressed", mouseX, mouseY);
     } else {
         // se nessuna lucciola è vicina, crea una nuova
         fireflies.push(new Firefly(mouseX, mouseY));
-        selectedIndex = fireflies.length - 1;
+        // selectedIndex = fireflies.length - 1;
     }
 }
 
