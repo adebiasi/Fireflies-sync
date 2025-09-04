@@ -1,15 +1,18 @@
 # Fireflies Synchronization (p5.js)
 
-![Demo of Fireflies Synchronization](demo.gif)
 
 This project simulates the synchronization phenomenon of fireflies using p5.js. The idea and implementation are inspired by the book "Sync: How Order Emerges from Chaos in the Universe, Nature, and Daily Life" by Steven Strogatz, which explores the science of synchronization in nature and technology. Each firefly is represented as a moving dot, and their phases can synchronize based on adjustable parameters. The simulation is interactive and visually demonstrates how local interactions can lead to global synchronization.
 
+![Demo of Fireflies Synchronization](demo.gif)
 ## Features
 - **Firefly Simulation:** Each firefly moves randomly and has an internal phase.
 - **Synchronization Control:** Adjust the coupling constant (K) and the interaction radius using sliders.
 - **Add/Select Fireflies:** Click on the canvas to add new fireflies or select existing ones.
 - **Visual Feedback:** Synchronized fireflies are highlighted, and the selected firefly shows its interaction radius.
 - **Enable/Disable Synchronization:** Toggle the synchronization effect with a button.
+
+## Try It Out
+You can try the simulation live at: [Fireflies Synchronization Demo](https://adebiasi.github.io/Fireflies-sync/})
 
 ## How to Use
 1. **Open `index.html` in your browser.**
